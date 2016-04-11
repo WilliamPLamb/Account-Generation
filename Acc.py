@@ -1,14 +1,26 @@
 #! python3
 # Gets account usernames and passwords from the stored file
-# Usage: py.exe Acc.pyw
+# and generates a new set if they do not already exist
+# To get a fresh set of accounts, delete the accounts.db file
+# and run Acc.py again.
 
-import shelve, pyperclip, sys
+# For Account generation (account.db file)
+usernameLength = 8
+passwordLength = 20
+size = 101
+
+import shelve, pyperclip, os
+from Storer import createAccounts
 
 print("What brings you my way today, good user?")
 print("account1 as default:")
 
-# Open the data file
+# Generate data file accounts.db if DNE
+if not os.path.exists("accounts.db"):
+    createAccounts(usernameLength, passwordLength, size)
+# open data file
 accountShelf = shelve.open("accounts")
+
 
 # Get data for first account to display
 username, password = accountShelf["account1"]

@@ -8,7 +8,7 @@ import string
 # remove indices 1,6,29 ?
 
 
-def strong_password(length):
+def strongPassword(length):
     password_list = []
     password = ''
     for x in range(length):
@@ -25,7 +25,7 @@ def strong_password(length):
 # the rest of the username is letters, except for the
 # last four digits
 # length should be at least 5
-def random_username(length):
+def randomUsername(length):
     username = ''
     username = username + string.ascii_uppercase[random.randint(0,25)]
     for x in range(length - 5):

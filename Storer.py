@@ -1,13 +1,15 @@
 #! python3
-# My class names are too long
+# function file to create some number of accounts
+# with random usernames and passwords
 
 import shelve
-from Generator import random_username, strong_password
+from Generator import randomUsername, strongPassword
 
-print("Username:", random_username(8))
-print("Password:", strong_password(30))
+# print("Username:", randomUsername(8))
+# print("Password:", strongPassword(20))
 
-shelfFile = shelve.open("accounts")
-for x in range(1, 501):
-    shelfFile["account" + str(x)] = [random_username(8), strong_password(30)]
-shelfFile.close()
+def createAccounts(usernameLength, passwordLength, size):
+    shelfFile = shelve.open("accounts")
+    for x in range(1, size):
+        shelfFile["account" + str(x)] = [randomUsername(usernameLength), strongPassword(passwordLength)]
+    shelfFile.close()
